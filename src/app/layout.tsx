@@ -19,7 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <nav className="grid gap-4 grid-cols-4">
               <Link href="/">Home</Link>
               <Link href="/about">About</Link>
-              <Link href="/FeaturedPosts">Posts</Link>
+              <Link href="/posts">Posts</Link>
               <Link href="/contact">Contact</Link>
             </nav>
           </header>
