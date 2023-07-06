@@ -1,10 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { remark } from 'remark'
-import html from 'remark-html'
 
-import styles from './page.module.css'
-
+import Markdown from '@/app/posts/[slug]/Markdown'
 import { getPost } from '@/service/posts'
 
 type Props = {
@@ -19,8 +16,6 @@ export default async function PostPage({ params: { slug } }: Props) {
     return null
   }
   const { title, description, date, content = '', img, prevContent, nextContent } = product
-  const processedContent = await remark().use(html).process(content)
-  const contentHtml = processedContent.toString()
   return (
     <div>
       {img && (
@@ -31,7 +26,7 @@ export default async function PostPage({ params: { slug } }: Props) {
       <p className="text-right">{date}</p>
       <p className="text-lg font-medium">{title}</p>
       <p className="text-xs text-gray-200">{description}</p>
-      <div className={styles.markdownBody} dangerouslySetInnerHTML={{ __html: contentHtml }} />
+      <Markdown content={content} />
 
       <div className="flex mt-5">
         {prevContent && (
