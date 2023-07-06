@@ -19,8 +19,6 @@ export async function POST(request: Request) {
       subject: title,
       text: message,
     })
-
-    alert('메일이 전송되었습니다.')
   } catch (err) {
     console.log(err)
   }
